@@ -1,0 +1,9 @@
+package com.pranav.service;
+
+import com.pranav.payload.PostDto;
+
+public interface PostService {
+
+	
+	PostDto createPost(PostDto postDto);
+}

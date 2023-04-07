@@ -1,0 +1,22 @@
+package com.pranav.exception;
+
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class ResourceNotFoundException extends RuntimeException {
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private String resourceName;
+	
+	private String fieldName;
+	
+	private String fieldValue;
+	
+	
+	
+}

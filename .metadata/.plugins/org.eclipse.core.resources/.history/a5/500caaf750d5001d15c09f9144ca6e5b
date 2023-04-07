@@ -1,0 +1,9 @@
+package com.pranav.service.impl;
+
+import com.pranav.service.PostService;
+
+public class PostServiceImpl implements PostService {
+
+	
+	
+}

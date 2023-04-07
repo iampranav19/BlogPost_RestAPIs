@@ -1,0 +1,17 @@
+package com.pranav.exception;
+
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class ResourceNotFoundException extends RuntimeException {
+
+	
+	private String resourceName;
+	
+	private String fieldName;
+	
+	private String fieldValue;
+	
+	
+	
+}

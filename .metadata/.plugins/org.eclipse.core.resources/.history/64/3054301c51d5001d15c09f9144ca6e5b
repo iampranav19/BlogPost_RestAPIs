@@ -1,0 +1,31 @@
+package com.pranav.service.impl;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.pranav.entity.Post;
+import com.pranav.payload.PostDto;
+import com.pranav.repository.PostRepository;
+import com.pranav.service.PostService;
+
+import ch.qos.logback.core.joran.util.beans.BeanUtil;
+
+public class PostServiceImpl implements PostService {
+
+	@Autowired
+	PostRepository postRepository;
+	
+	@Override
+	public PostDto createPost(PostDto postDto) {
+		// TODO Auto-generated method stub
+		Post post=new Post();
+		
+		BeanUtils.copyProperties(postDto, post);
+		postRepository.save(post);
+		return null;
+	}
+
+	
+	
+	
+}

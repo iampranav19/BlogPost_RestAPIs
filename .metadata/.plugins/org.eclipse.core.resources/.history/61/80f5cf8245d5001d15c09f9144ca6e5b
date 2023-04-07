@@ -1,0 +1,39 @@
+package com.pranav.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import lombok.Getter;
+
+@Getter
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
+public class ResourceNotFoundException extends RuntimeException {
+
+	
+	/**
+	 * 
+	 */	
+	private static final long serialVersionUID = 1L;
+	
+	
+
+	
+	public ResourceNotFoundException(String resourceName, String fieldName, String fieldValue) {
+		super(String.format("%s not found with %s: '%s'",resourceName,fieldName,fieldValue ));
+		// Example: Post Not Found with Id : 1
+		
+		this.resourceName = resourceName;
+		this.fieldName = fieldName;
+		this.fieldValue = fieldValue;
+	}
+	
+	private String resourceName;
+	
+
+	private String fieldName;
+	
+	private String fieldValue;
+	
+	
+	
+}
