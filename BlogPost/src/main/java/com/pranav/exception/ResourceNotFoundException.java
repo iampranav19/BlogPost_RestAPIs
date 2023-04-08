@@ -10,7 +10,7 @@ public class ResourceNotFoundException extends RuntimeException {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public ResourceNotFoundException(String resourceName, String fieldName, String fieldValue) {
+	public ResourceNotFoundException(String resourceName, String fieldName, Long fieldValue) {
 		super(String.format("%s not found with %s: '%s'",resourceName,fieldName,fieldValue ));
 		// Example: Post Not Found with Id : 1
 		
@@ -23,6 +23,6 @@ public class ResourceNotFoundException extends RuntimeException {
 	
 	private String fieldName;
 	
-	private String fieldValue;
+	private Long fieldValue;
 	
 }

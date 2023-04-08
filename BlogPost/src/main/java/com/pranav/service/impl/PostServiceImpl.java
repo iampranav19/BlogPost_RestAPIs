@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pranav.entity.Post;
+import com.pranav.exception.ResourceNotFoundException;
 import com.pranav.payload.PostDto;
 import com.pranav.repository.PostRepository;
 import com.pranav.service.PostService;
@@ -50,6 +51,42 @@ public class PostServiceImpl implements PostService {
 		postDto.setDescription(post.getDescription());
 		return postDto;
 	}
+
+	@Override
+	public PostDto getPostById(Long id) {
+		// TODO Auto-generated method stub
+	  Post post = postRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Post", "Id", id));
+	  PostDto dto=new PostDto();
+	  BeanUtils.copyProperties(post, dto);
+	  return dto;
+	}
+
+	@Override
+	public PostDto updatePost(Long id, PostDto postDto) {
+		
+		Post post = postRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Post", "Id", id));
+		
+		post.setTitle(postDto.getTitle());
+		post.setDescription(postDto.getDescription());
+		post.setContent(postDto.getContent());
+		
+		Post updatedPost = postRepository.save(post);
+		PostDto updatedDto=new PostDto();
+		BeanUtils.copyProperties(post, updatedDto);
+		
+		return updatedDto;
+	}
+
+	@Override
+	public String deletePost(Long id) {
+		// TODO Auto-generated method stub
+		getPostById(id);
+		
+		postRepository.deleteById(id);
+		return "Post with Id:"+id+" Deleted Successfully!";
+	}
+
+	
 
 	
 	
