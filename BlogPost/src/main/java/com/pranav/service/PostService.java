@@ -3,13 +3,14 @@ package com.pranav.service;
 import java.util.List;
 
 import com.pranav.payload.PostDto;
+import com.pranav.payload.PostResponse;
 
 public interface PostService {
 
 	
 	PostDto createPost(PostDto postDto);
 	
-	List<PostDto> allPosts();
+	PostResponse allPosts(int pageNo, int pageSize);
 	
 	PostDto getPostById(Long id);
 	

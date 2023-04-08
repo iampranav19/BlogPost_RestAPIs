@@ -1,0 +1,18 @@
+package com.pranav.payload;
+
+import java.util.List;
+
+public class PageResponse {
+
+	List<PostDto> content;
+	
+	private int pageNo;
+	
+	private int pageSize;
+	
+	private long totalElements;
+	
+	private int totalPages;
+	
+	private boolean lastPage;
+}

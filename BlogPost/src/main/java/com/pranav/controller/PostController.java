@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pranav.payload.PostDto;
+import com.pranav.payload.PostResponse;
 import com.pranav.service.PostService;
 
 @RestController
@@ -33,9 +35,12 @@ public class PostController {
 	
 	// all Post
 	@GetMapping
-	public ResponseEntity<List<PostDto>> allPosts()
+	public ResponseEntity<PostResponse> allPosts(
+			@RequestParam(value ="pageNo", defaultValue = "0" , required = false ) int pageNo,
+			@RequestParam(value = "pageSize", defaultValue = "10" , required = false) int pageSize
+			)
 	{
-		return new ResponseEntity<List<PostDto>>(postService.allPosts(), HttpStatus.OK);
+		return new ResponseEntity<PostResponse>(postService.allPosts(pageNo, pageSize), HttpStatus.OK);
 	}
 	
 	// Post based on Id
