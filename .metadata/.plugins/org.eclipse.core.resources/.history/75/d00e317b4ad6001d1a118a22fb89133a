@@ -1,0 +1,64 @@
+package com.pranav.service.impl;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.pranav.entity.Comment;
+import com.pranav.entity.Post;
+import com.pranav.exception.ResourceNotFoundException;
+import com.pranav.payload.CommentDto;
+import com.pranav.payload.PostResponse;
+import com.pranav.repository.CommentRepository;
+import com.pranav.repository.PostRepository;
+import com.pranav.service.CommentService;
+
+@Service
+public class CommentServiceImpl implements CommentService {
+
+	@Autowired
+	CommentRepository commentRepository;
+	
+	@Autowired
+	PostRepository postRepository;
+	
+	@Override
+	public CommentDto createComment(long postId, CommentDto commentDto) {
+		
+		Comment comment= new Comment();
+		BeanUtils.copyProperties(commentDto, comment);
+		
+		// reterive post entity by Id
+		Post post = postRepository.findById(postId).orElseThrow(()-> new ResourceNotFoundException("Post", "Id", postId));
+		
+		// set post to comment entity
+		comment.setPost(post);
+		
+		Comment savedComment = commentRepository.save(comment);
+		CommentDto savedDto=new CommentDto();
+		BeanUtils.copyProperties(savedComment, savedDto);
+		return savedDto;
+	}
+
+	@Override
+	public List<CommentDto> allComments(Long postId) {
+		// TODO Auto-generated method stub
+		List<Comment> allComments = commentRepository.findAll();
+		
+		return allComments.stream().map(comment -> mapToCommentDto(comment)).collect(Collectors.toList());
+	}
+	public CommentDto mapToCommentDto(Comment comment)
+	{
+		CommentDto commentDto=new CommentDto();
+		
+		commentDto.setId(comment.getId());
+		commentDto.setBody(comment.getBody());
+		commentDto.setEmail(comment.getEmail());
+		commentDto.setName(comment.getName());
+		return commentDto;
+	}
+
+}

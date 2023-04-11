@@ -1,0 +1,21 @@
+package com.pranav.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.pranav.payload.CommentDto;
+import com.pranav.repository.CommentRepository;
+import com.pranav.service.CommentService;
+
+public class CommentServiceImpl implements CommentService {
+
+	@Autowired
+	CommentRepository commentRepository;
+	
+	@Override
+	public CommentDto createComment(long postId, CommentDto commentDto) {
+		
+		
+		return null;
+	}
+
+}

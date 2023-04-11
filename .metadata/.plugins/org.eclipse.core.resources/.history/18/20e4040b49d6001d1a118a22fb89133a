@@ -1,0 +1,9 @@
+package com.pranav.service;
+
+import com.pranav.payload.CommentDto;
+
+public interface CommentService {
+
+	
+	CommentDto createComment(long postId,CommentDto commentDto);
+}

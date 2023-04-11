@@ -26,6 +26,16 @@ public class PostController {
 	@Autowired
 	private PostService postService;
 	
+	
+	// JSON
+	/*
+	{
+    "title": "Post -8",
+    "description": "Python Fast API- New Microservice King",
+    "content": "The newest long-term support release for the Java SE platform is Java 17 LTS. Under the Oracle No-Fee Terms and Cond"
+	}
+	 */
+	
 	// Create new Post
 	@PostMapping
 	public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto)
