@@ -19,6 +19,8 @@ import com.pranav.payload.PostDto;
 import com.pranav.payload.PostResponse;
 import com.pranav.service.PostService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/posts")
 public class PostController {
@@ -38,7 +40,7 @@ public class PostController {
 	
 	// Create new Post
 	@PostMapping
-	public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto)
+	public ResponseEntity<PostDto> createPost(@Valid @RequestBody PostDto postDto)
 	{
 		return new ResponseEntity<PostDto>(postService.createPost(postDto), HttpStatus.CREATED);
 	}
@@ -62,7 +64,7 @@ public class PostController {
 	
 	// To update the Post
 	@PutMapping("/{id}")
-	public ResponseEntity<PostDto> updatePost(@PathVariable Long id, @RequestBody PostDto postDto)
+	public ResponseEntity<PostDto> updatePost(@Valid @PathVariable Long id, @RequestBody PostDto postDto)
 	{
 		return new ResponseEntity<PostDto>(postService.updatePost(id, postDto), HttpStatus.OK);
 	}
