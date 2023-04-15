@@ -1,0 +1,7 @@
+package com.pranav.service.impl;
+
+import com.pranav.service.AuthService;
+
+public class AuthServiceImpl implements AuthService {
+
+}

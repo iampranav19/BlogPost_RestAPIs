@@ -1,0 +1,27 @@
+package com.pranav.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+
+import com.pranav.payload.LoginDto;
+import com.pranav.service.AuthService;
+@Service
+public class AuthServiceImpl implements AuthService {
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
+	@Override
+	public String login(LoginDto loginDto) {
+		// TODO Auto-generated method stub
+		
+		Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsernameOrEmail(), loginDto.getPassword()));
+		SecurityContextHolder.getContext().setAuthentication(authenticate);
+		return "User Login successfully!";
+	}
+
+}

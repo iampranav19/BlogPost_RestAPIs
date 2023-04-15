@@ -1,0 +1,14 @@
+package com.pranav.service.impl;
+
+import com.pranav.payload.LoginDto;
+import com.pranav.service.AuthService;
+@Service
+public class AuthServiceImpl implements AuthService {
+
+	@Override
+	public String login(LoginDto loginDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
