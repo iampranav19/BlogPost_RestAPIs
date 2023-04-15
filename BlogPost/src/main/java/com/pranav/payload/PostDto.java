@@ -19,7 +19,7 @@ public class PostDto {
 	@Size(min = 2, message = "Post Title Cannot be empty, It should have atleast 2 characters" )
 	private String title;
 	
-	@NotEmpty
+	@NotEmpty(message = "Please entert the description")
 	@Size(min = 10, message = "Post Description Cannot be empty, It should have atleast 10 characters" )
 	private String description;
 	

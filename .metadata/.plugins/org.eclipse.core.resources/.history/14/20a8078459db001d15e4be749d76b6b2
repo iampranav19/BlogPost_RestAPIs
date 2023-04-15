@@ -1,0 +1,5 @@
+package com.pranav.utils;
+
+public class PasswordGenerator {
+
+}

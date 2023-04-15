@@ -1,0 +1,5 @@
+package com.pranav.repository;
+
+public interface RoleRepository {
+
+}
